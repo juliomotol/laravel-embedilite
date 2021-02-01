@@ -1,16 +1,16 @@
 {
-    "name": ":vendor_name/:package_name",
-    "description": ":package_description",
+    "name": "juliomotol/laravel-embedilite",
+    "description": "laravel-embedilite",
     "keywords": [
-        ":vendor_name",
-        ":package_name"
+        "juliomotol",
+        "laravel-embedilite"
     ],
-    "homepage": "https://github.com/:vendor_name/:package_name",
+    "homepage": "https://github.com/juliomotol/laravel-embedilite",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": ":author_email",
+            "name": "Julio Motol",
+            "email": "julio.motol89@gmail.com",
             "role": "Developer"
         }
     ],
@@ -26,13 +26,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Spatie\\Skeleton\\": "src",
-            "Spatie\\Skeleton\\Database\\Factories\\": "database/factories"
+            "JulioMotol\\Embedilite\\": "src",
+            "JulioMotol\\Embedilite\\Database\\Factories\\": "database/factories"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Spatie\\Skeleton\\Tests\\": "tests"
+            "JulioMotol\\Embedilite\\Tests\\": "tests"
         }
     },
     "scripts": {
@@ -46,10 +46,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Spatie\\Skeleton\\SkeletonServiceProvider"
+                "JulioMotol\\Embedilite\\EmbediliteServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "Spatie\\Skeleton\\SkeletonFacade"
+                "Embedilite": "JulioMotol\\Embedilite\\EmbediliteFacade"
             }
         }
     },

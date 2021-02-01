@@ -1,6 +1,6 @@
 <?php
 
-namespace Spatie\Skeleton\Tests;
+namespace JulioMotol\Embedilite\Tests;
 
 class ExampleTest extends TestCase
 {

@@ -11,35 +11,35 @@ abstract class Provider implements ProviderContract
 {
     /**
      * The embed provider name.
-     * 
+     *
      * @var string|null
      */
     protected ?string $name;
 
     /**
      * The embed view template.
-     * 
+     *
      * @var string
      */
     protected string $view;
 
     /**
      * The embed source
-     * 
+     *
      * @var string
      */
     protected string $source;
 
     /**
      * The embed source
-     * 
+     *
      * @var array
      */
     protected array $options;
 
     /**
      * Create a new provider instance.
-     * 
+     *
      * @param string|null $source
      * @param array $options
      */
@@ -51,7 +51,7 @@ abstract class Provider implements ProviderContract
 
     /**
      * Set the embed source.
-     * 
+     *
      * @param string $source
      * @return self
      */
@@ -64,7 +64,7 @@ abstract class Provider implements ProviderContract
 
     /**
      * Set the embed options.
-     * 
+     *
      * @param array $options
      * @return self
      */
@@ -92,7 +92,7 @@ abstract class Provider implements ProviderContract
      */
     public function render(): string
     {
-        if (!$this->validateSource($this->source)) {
+        if (! $this->validateSource($this->source)) {
             throw new InvalidEmbedSource($this);
         }
 

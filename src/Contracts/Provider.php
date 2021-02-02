@@ -8,7 +8,7 @@ interface Provider extends Renderable
 {
     /**
      * Validate the given embed source.
-     * 
+     *
      * @param string $source
      * @return bool
      */
@@ -16,7 +16,7 @@ interface Provider extends Renderable
 
     /**
      * Parse the source to the data needed to render the embed.
-     * 
+     *
      * @return array
      */
     public function parseSource(): array;

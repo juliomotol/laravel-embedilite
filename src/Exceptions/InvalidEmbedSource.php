@@ -3,14 +3,14 @@
 namespace JulioMotol\Embedilite\Exceptions;
 
 use Exception;
-use JulioMotol\Embedilite\Providers\Provider;
 use Illuminate\Support\Str;
+use JulioMotol\Embedilite\Providers\Provider;
 
 class InvalidEmbedSource extends Exception
 {
     /**
      * The embed provider.
-     * 
+     *
      * @var Provider
      */
     protected Provider $provider;

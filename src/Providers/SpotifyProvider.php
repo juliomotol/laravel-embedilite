@@ -19,7 +19,7 @@ class SpotifyProvider extends Provider
 
     /**
      * Validate the given embed source.
-     * 
+     *
      * @param string $source
      * @return bool
      */
@@ -30,7 +30,7 @@ class SpotifyProvider extends Provider
 
     /**
      * Parse the source to the data needed to render the embed.
-     * 
+     *
      * @return array
      */
     public function parseSource(): array
@@ -62,7 +62,7 @@ class SpotifyProvider extends Provider
 
         return [
             'id' => $parts->pop(),
-            'type' => $parts->pop()
+            'type' => $parts->pop(),
         ];
     }
 
@@ -79,7 +79,7 @@ class SpotifyProvider extends Provider
 
         return [
             'id' => $parts->pop(),
-            'type' => $parts->pop()
+            'type' => $parts->pop(),
         ];
     }
 }

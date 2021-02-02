@@ -6,7 +6,7 @@ use Illuminate\Support\Facades\Facade;
 use JulioMotol\Embedilite\Contracts\Factory;
 
 /**
- * @method static \JulioMotol\Embedilite\Contracts\Provider from(string driver)
+ * @method static \JulioMotol\Embedilite\Contracts\Provider from(string $driver)
  * @see \JulioMotol\Embedilite\EmbediliteManager
  */
 class EmbediliteFacade extends Facade

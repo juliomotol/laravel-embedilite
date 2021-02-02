@@ -21,7 +21,7 @@ abstract class Provider implements ProviderContract
      *
      * @var string
      */
-    protected string $view;
+    protected ?string $view;
 
     /**
      * The embed source
@@ -82,7 +82,7 @@ abstract class Provider implements ProviderContract
      */
     public function name(): string
     {
-        return $name ?? (string)Str::of(get_class($this))->beforeLast('Provider')->replaceMatches('/(?=[A-Z])/', ' ')->trim();
+        return $this->name ?? (string)Str::of(get_class($this))->beforeLast('Provider')->replaceMatches('/(?=[A-Z])/', ' ')->trim();
     }
 
     /**
@@ -96,7 +96,7 @@ abstract class Provider implements ProviderContract
             throw new InvalidEmbedSource($this);
         }
 
-        if (isset($this->view)) {
+        if ($this->view) {
             throw new InvalidArgumentException('No view template was specified.');
         }
 

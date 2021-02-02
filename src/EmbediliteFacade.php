@@ -3,14 +3,16 @@
 namespace JulioMotol\Embedilite;
 
 use Illuminate\Support\Facades\Facade;
+use JulioMotol\Embedilite\Contracts\Factory;
 
 /**
- * @see \JulioMotol\Embedilite\Embedilite
+ * @method static \JulioMotol\Embedilite\Contracts\Provider from(string driver)
+ * @see \JulioMotol\Embedilite\EmbediliteManager
  */
 class EmbediliteFacade extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'embedilite';
+        return Factory::class;
     }
 }

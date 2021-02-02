@@ -4,19 +4,21 @@ namespace JulioMotol\Embedilite;
 
 use Illuminate\Support\Manager;
 use InvalidArgumentException;
+use JulioMotol\Embedilite\Contracts\Factory;
+use JulioMotol\Embedilite\Contracts\Provider;
 use JulioMotol\Embedilite\Providers\SpotifyProvider;
 
-class EmbediliteManager extends Manager
+class EmbediliteManager extends Manager implements Factory
 {
     /**
-     * Get the embed provideri instance.
+     * Get the embed provider instance.
      *
-     * @param string $driver
-     * @return \JulioMotol\Embedilite\Providers\Provider
+     * @param string $provider
+     * @return Provider
      */
-    public function from(string $driver)
+    public function from(string $provider): Provider
     {
-        return $this->driver($driver);
+        return $this->driver($provider);
     }
 
     /**

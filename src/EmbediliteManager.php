@@ -20,6 +20,16 @@ class EmbediliteManager extends Manager
     }
 
     /**
+     * Create an instance of a Spotify embed driver.
+     *
+     * @return SpotifyProvider
+     */
+    protected function createSpotifyDriver()
+    {
+        return new SpotifyProvider;
+    }
+
+    /**
      * Get the default driver name.
      *
      * @throws InvalidArgumentException

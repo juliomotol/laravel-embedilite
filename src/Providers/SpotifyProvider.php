@@ -15,7 +15,7 @@ class SpotifyProvider extends Provider
      *
      * @var string
      */
-    protected $view = 'embedilite::spotify';
+    protected string $view = 'embedilite::spotify';
 
     /**
      * Validate the given embed source.

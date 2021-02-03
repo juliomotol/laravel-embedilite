@@ -8,7 +8,7 @@ use InvalidArgumentException;
 use JulioMotol\Embedilite\Contracts\Provider as ProviderContract;
 use JulioMotol\Embedilite\Exceptions\InvalidEmbedSource;
 
-abstract class Provider implements ProviderContract, Htmlable
+abstract class Provider implements ProviderContract
 {
     /**
      * The embed provider name.
@@ -22,7 +22,7 @@ abstract class Provider implements ProviderContract, Htmlable
      *
      * @var string
      */
-    protected ?string $view;
+    protected string $view = '';
 
     /**
      * The embed source
@@ -36,7 +36,7 @@ abstract class Provider implements ProviderContract, Htmlable
      *
      * @var array
      */
-    protected array $options;
+    protected array $options = [];
 
     /**
      * Create a new provider instance.
@@ -46,8 +46,13 @@ abstract class Provider implements ProviderContract, Htmlable
      */
     public function __construct(string $source = null, array $options = [])
     {
-        $this->setSource($source);
-        $this->setOptions($options);
+        if ($source) {
+            $this->setSource($source);
+        }
+
+        if (!empty($options)) {
+            $this->setOptions($options);
+        }
     }
 
     /**
@@ -56,7 +61,7 @@ abstract class Provider implements ProviderContract, Htmlable
      * @param string $source
      * @return self
      */
-    public function setSource(string $source)
+    public function setSource(string $source): self
     {
         $this->source = $source;
 
@@ -69,7 +74,7 @@ abstract class Provider implements ProviderContract, Htmlable
      * @param array $options
      * @return self
      */
-    public function setOptions(array $options)
+    public function setOptions(array $options): self
     {
         $this->options = $options;
 
@@ -93,11 +98,11 @@ abstract class Provider implements ProviderContract, Htmlable
      */
     public function toHtml(): string
     {
-        if (! $this->validateSource($this->source)) {
+        if (!$this->validateSource($this->source)) {
             throw new InvalidEmbedSource($this);
         }
 
-        if ($this->view) {
+        if (!$this->view) {
             throw new InvalidArgumentException('No view template was specified.');
         }
 

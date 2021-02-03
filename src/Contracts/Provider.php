@@ -2,7 +2,9 @@
 
 namespace JulioMotol\Embedilite\Contracts;
 
-interface Provider
+use Illuminate\Contracts\Support\Htmlable;
+
+interface Provider extends Htmlable
 {
     /**
      * Validate the given embed source.
@@ -18,4 +20,20 @@ interface Provider
      * @return array
      */
     public function parseSource(): array;
+
+    /**
+     * Set the embed source.
+     *
+     * @param string $source
+     * @return self
+     */
+    public function setSource(string $source): self;
+
+    /**
+     * Set the embed options.
+     *
+     * @param array $options
+     * @return self
+     */
+    public function setOptions(array $options): self;
 }

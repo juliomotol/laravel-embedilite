@@ -2,7 +2,6 @@
 
 namespace JulioMotol\Embedilite\Providers;
 
-use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use JulioMotol\Embedilite\Contracts\Provider as ProviderContract;
@@ -50,7 +49,7 @@ abstract class Provider implements ProviderContract
             $this->setSource($source);
         }
 
-        if (!empty($options)) {
+        if (! empty($options)) {
             $this->setOptions($options);
         }
     }
@@ -98,11 +97,11 @@ abstract class Provider implements ProviderContract
      */
     public function toHtml(): string
     {
-        if (!$this->validateSource($this->source)) {
+        if (! $this->validateSource($this->source)) {
             throw new InvalidEmbedSource($this);
         }
 
-        if (!$this->view) {
+        if (! $this->view) {
             throw new InvalidArgumentException('No view template was specified.');
         }
 

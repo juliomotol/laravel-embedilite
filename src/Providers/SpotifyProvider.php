@@ -54,9 +54,9 @@ class SpotifyProvider extends Provider
      */
     protected function parseUrl(string $url): array
     {
-        $urlStructure = parse_url($url);
+        ['path' => $path] = parse_url($url);
 
-        $parts = Collection::make(explode('/', $urlStructure['path']))
+        $parts = Collection::make(explode('/', $path))
             ->filter()
             ->values();
 
@@ -74,8 +74,7 @@ class SpotifyProvider extends Provider
      */
     protected function parseUri(string $uri): array
     {
-        $parts = Str::of($uri)
-            ->explode(':');
+        $parts = Str::of($uri)->explode(':');
 
         return [
             'id' => $parts->pop(),

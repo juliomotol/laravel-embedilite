@@ -2,12 +2,13 @@
 
 namespace JulioMotol\Embedilite\Providers;
 
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Support\Str;
 use InvalidArgumentException;
 use JulioMotol\Embedilite\Contracts\Provider as ProviderContract;
 use JulioMotol\Embedilite\Exceptions\InvalidEmbedSource;
 
-abstract class Provider implements ProviderContract
+abstract class Provider implements ProviderContract, Htmlable
 {
     /**
      * The embed provider name.
@@ -90,7 +91,7 @@ abstract class Provider implements ProviderContract
      *
      * @return string
      */
-    public function render(): string
+    public function toHtml(): string
     {
         if (! $this->validateSource($this->source)) {
             throw new InvalidEmbedSource($this);
@@ -103,15 +104,5 @@ abstract class Provider implements ProviderContract
         $viewPayload = array_merge($this->parseSource(), $this->options);
 
         return (string)view($this->view, $viewPayload);
-    }
-
-    /**
-     * Get the raw string value.
-     *
-     * @return string
-     */
-    public function __toString()
-    {
-        return $this->render();
     }
 }

@@ -2,9 +2,7 @@
 
 namespace JulioMotol\Embedilite\Contracts;
 
-use Illuminate\Contracts\Support\Renderable;
-
-interface Provider extends Renderable
+interface Provider
 {
     /**
      * Validate the given embed source.

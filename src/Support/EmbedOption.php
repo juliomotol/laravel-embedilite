@@ -14,7 +14,7 @@ class EmbedOption
     /**
      * The options for the embed provider.
      *
-     * @var string
+     * @var array
      */
     public array $options = [];
 

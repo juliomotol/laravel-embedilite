@@ -65,7 +65,7 @@ class EmbedCast implements CastsAttributes
             });
         }
 
-        throw new InvalidArgumentException("Unable to cast embed provider for {$this->column} where providers could be {implode(', ', $this->providers)}.");
+        throw new InvalidArgumentException('Unable to cast embed provider for '.$this->column.' where providers could be '.implode(', ', $this->providers).'.');
     }
 
     /**

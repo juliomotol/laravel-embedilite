@@ -28,14 +28,14 @@ abstract class Provider implements ProviderContract
      *
      * @var string
      */
-    protected string $source;
+    public string $source;
 
     /**
      * The embed source
      *
      * @var array
      */
-    protected array $options = [];
+    public array $options = [];
 
     /**
      * Create a new provider instance.
@@ -107,6 +107,11 @@ abstract class Provider implements ProviderContract
 
         $viewPayload = array_merge($this->parseSource(), $this->options);
 
-        return (string)view($this->view, $viewPayload);
+        return (string)view($this->view, $viewPayload)->render();
+    }
+
+    public function __toString(): string
+    {
+        return $this->toHtml();
     }
 }

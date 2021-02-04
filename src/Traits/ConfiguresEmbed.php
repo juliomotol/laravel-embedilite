@@ -8,7 +8,7 @@ trait ConfiguresEmbed
 {
     /**
      * The configured embed options.
-     * 
+     *
      * @var EmbedOption[]
      */
     protected array $embedOptions = [];

@@ -6,14 +6,14 @@ class EmbedOption
 {
     /**
      * The embed provider.
-     * 
+     *
      * @var string
      */
     public string $provider = '';
 
     /**
      * The options for the embed provider.
-     * 
+     *
      * @var string
      */
     public array $options = [];

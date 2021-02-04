@@ -17,7 +17,7 @@ class EmbedCastModel extends Model
     public $timestamps = false;
 
     protected $casts = [
-        'embed' => EmbedCast::class . ':source,spotify'
+        'embed' => EmbedCast::class . ':source,spotify',
     ];
 
     public function registerEmbedOptions(): void

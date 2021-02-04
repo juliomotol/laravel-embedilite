@@ -4,22 +4,22 @@ namespace JulioMotol\Embedilite\Casts;
 
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use InvalidArgumentException;
-use JulioMotol\Embedilite\Providers\Provider;
 use JulioMotol\Embedilite\EmbediliteFacade as Embedilite;
+use JulioMotol\Embedilite\Providers\Provider;
 use JulioMotol\Embedilite\Traits\ConfiguresEmbed;
 
 class EmbedCast implements CastsAttributes
 {
     /**
      * The target column to cast.
-     * 
+     *
      * @var string
      */
     protected string $column = '';
 
     /**
      * The embed providers for the column.
-     * 
+     *
      * @var array
      */
     protected array $providers = [];
@@ -52,7 +52,7 @@ class EmbedCast implements CastsAttributes
         foreach ($this->providers as $provider) {
             $embedProvider = Embedilite::from($provider);
 
-            if (!$embedProvider->validateSource($value)) {
+            if (! $embedProvider->validateSource($value)) {
                 continue;
             }
 

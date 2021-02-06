@@ -1,6 +1,6 @@
 <?php
 
-namespace JulioMotol\Embedilite\Traits;
+namespace JulioMotol\Embedilite\Concerns;
 
 use JulioMotol\Embedilite\Support\EmbedOption;
 
@@ -44,7 +44,9 @@ trait ConfiguresEmbed
      */
     public function getEmbedOptions(string $provider): ?EmbedOption
     {
-        $this->registerEmbedOptions();
+        if (empty($embedOptions)) {
+            $this->registerEmbedOptions();
+        }
 
         return collect($this->embedOptions)
             ->first(fn (EmbedOption $embedOption) => $embedOption->provider === $provider);

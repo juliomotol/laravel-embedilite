@@ -97,7 +97,7 @@ abstract class Provider implements ProviderContract
      */
     public function toHtml(): string
     {
-        if (! $this->validateSource($this->source)) {
+        if (! self::validateSource($this->source)) {
             throw new InvalidEmbedSource($this);
         }
 
@@ -107,7 +107,7 @@ abstract class Provider implements ProviderContract
 
         $viewPayload = array_merge($this->parseSource(), $this->options);
 
-        return (string)view($this->view, $viewPayload)->render();
+        return view($this->view, $viewPayload)->render();
     }
 
     public function __toString(): string

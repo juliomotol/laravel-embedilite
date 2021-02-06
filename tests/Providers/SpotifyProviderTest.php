@@ -13,19 +13,19 @@ class SpotifyProviderTest extends TestCase
     /** @test */
     public function it_validates_spotify_url()
     {
-        $this->assertTrue(Embedilite::from('spotify')->validateSource(SpotifySource::URL));
+        $this->assertTrue(Embedilite::from('spotify')::validateSource(SpotifySource::URL));
     }
 
     /** @test */
     public function it_validates_spotify_uri()
     {
-        $this->assertTrue(Embedilite::from('spotify')->validateSource(SpotifySource::URI));
+        $this->assertTrue(Embedilite::from('spotify')::validateSource(SpotifySource::URI));
     }
 
     /** @test */
     public function it_validates_invalid_spotify_source()
     {
-        $this->assertFalse(Embedilite::from('spotify')->validateSource(''));
+        $this->assertFalse(Embedilite::from('spotify')::validateSource(''));
     }
 
     /** @test */

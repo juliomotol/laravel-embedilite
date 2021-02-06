@@ -13,11 +13,21 @@ class Embed extends Model implements Htmlable
         'options' => 'array',
     ];
 
+    /**
+     * Get the related model.
+     *
+     * @return MorphTo
+     */
     public function model(): MorphTo
     {
         return $this->morphTo();
     }
 
+    /**
+     * Get content as a string of HTML.
+     *
+     * @return string
+     */
     public function toHtml()
     {
         return Embedilite::from($this->provider)

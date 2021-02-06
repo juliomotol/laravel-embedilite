@@ -11,30 +11,55 @@ trait InteractsWithEmbed
 {
     use ConfiguresEmbed;
 
+    /**
+     * Get the related embed models.
+     *
+     * @return MorphMany
+     */
     public function embed(): MorphMany
     {
         return $this->morphMany(config('embedilite.model'), 'model');
     }
 
-    public function addEmbed(string $source, string $provider, array $options = [])
+    /**
+     * Add an embed to this model.
+     *
+     * @param string $source
+     * @param string $provider
+     * @param array $options
+     * @return Embed
+     */
+    public function addEmbed(string $source, string $provider, array $options = []): Embed
     {
         $options = array_merge($this->getEmbedOptions($provider), $options);
 
         EmbediliteFacade::from($provider)::validateSource($source);
 
-        $this->embed()->create([
+        return $this->embed()->create([
             'source' => $source,
             'provider' => $provider,
             'options' => $options,
         ]);
     }
 
-    public function hasEmbed(string $provider = null): bool
+    /**
+     * Check if this model has embed.
+     *
+     * @param string|null $provider
+     * @return boolean
+     */
+    public function hasEmbed(?string $provider): bool
     {
         return count($this->getEmbed($provider)) ? true : false;
     }
 
-    public function getEmbed(string $provider = null): ?Collection
+    /**
+     * Get the embeds of this model.
+     *
+     * @param string|null $provider
+     * @return Collection|null
+     */
+    public function getEmbed(?string $provider): ?Collection
     {
         $query = $this->embed();
 
@@ -45,11 +70,23 @@ trait InteractsWithEmbed
         return $query->get();
     }
 
-    public function getFirstEmbed($provider = null): ?Embed
+    /**
+     * Get the first embed of this model
+     *
+     * @param string|null $provider
+     * @return Embed|null
+     */
+    public function getFirstEmbed(?string $provider): ?Embed
     {
         return $this->getEmbed($provider)->first();
     }
 
+    /**
+     * Delete an embed of this model.
+     *
+     * @param int|Embed $embedId
+     * @return void
+     */
     public function deleteEmbed($embedId): void
     {
         if ($embedId instanceof Embed) {
@@ -65,7 +102,13 @@ trait InteractsWithEmbed
         $embed->delete();
     }
 
-    public function clearEmbed($provider = null): void
+    /**
+     * Clear all the embed of this model.
+     *
+     * @param string|null $provider
+     * @return void
+     */
+    public function clearEmbed(?string $provider): void
     {
         $this->getEmbed($provider)->each(fn (Embed $embed) => $embed->delete());
     }

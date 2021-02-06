@@ -9,11 +9,14 @@ class CreateEmbediliteTable extends Migration
     public function up()
     {
         Schema::create('embed', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->id();
 
-            // add fields
+            $table->morphs('model');
+            $table->string('source');
+            $table->string('provider');
+            $table->json('options');
 
-            $table->timestamps();
+            $table->nullableTimestamps();
         });
     }
 }

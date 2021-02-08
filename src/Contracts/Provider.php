@@ -17,9 +17,9 @@ interface Provider extends Htmlable
     /**
      * Parse the source to the data needed to render the embed.
      *
-     * @return array
+     * @return string
      */
-    public function parseSource(): array;
+    public function parseSource(): string;
 
     /**
      * Set the embed source.

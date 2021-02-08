@@ -97,7 +97,7 @@ abstract class Provider implements ProviderContract
      */
     public function toHtml(): string
     {
-        if (! self::validateSource($this->source)) {
+        if (! $this->validateSource($this->source)) {
             throw new InvalidEmbedSource($this);
         }
 
@@ -105,7 +105,7 @@ abstract class Provider implements ProviderContract
             throw new InvalidArgumentException('No view template was specified.');
         }
 
-        $viewPayload = array_merge($this->parseSource(), $this->options);
+        $viewPayload = array_merge(['source' => $this->parseSource()], $this->options);
 
         return view($this->view, $viewPayload)->render();
     }

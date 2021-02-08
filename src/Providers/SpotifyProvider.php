@@ -33,17 +33,13 @@ class SpotifyProvider extends Provider
      *
      * @return array
      */
-    public function parseSource(): array
+    public function parseSource(): string
     {
-        if (Str::startsWith($this->source, self::URL_PREFIX)) {
-            return $this->parseUrl($this->source);
-        }
+        ['id' => $id, 'type' => $type] = Str::startsWith($this->source, self::URL_PREFIX)
+            ? $this->parseUrl($this->source)
+            : $this->parseUri($this->source);
 
-        if (Str::startsWith($this->source, self::URI_PREFIX)) {
-            return $this->parseUri($this->source);
-        }
-
-        throw new \Exception();
+        return "https://open.spotify.com/embed/{$type}/{$id}";
     }
 
     /**

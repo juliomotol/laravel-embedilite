@@ -5,8 +5,8 @@ namespace JulioMotol\Embedilite\Tests\Providers;
 use Illuminate\Support\Facades\View;
 use JulioMotol\Embedilite\EmbediliteFacade as Embedilite;
 use JulioMotol\Embedilite\Exceptions\InvalidEmbedSource;
-use JulioMotol\Embedilite\Tests\Support\SpotifySource;
 use JulioMotol\Embedilite\Tests\TestCase;
+use JulioMotol\Embedilite\Tests\TestSupport\TestSources\SpotifySource;
 
 class SpotifyProviderTest extends TestCase
 {
@@ -31,17 +31,24 @@ class SpotifyProviderTest extends TestCase
     /** @test */
     public function it_parses_spotify_url()
     {
-        ['id' => $id, 'type' => $type] = Embedilite::from('spotify')->setSource(SpotifySource::URL)->parseSource();
+        $source = Embedilite::from('spotify')->setSource(SpotifySource::URL)->parseSource();
 
-        $this->assertEquals(SpotifySource::ID, $id);
-        $this->assertEquals(SpotifySource::TYPE, $type);
+        $this->assertEquals(SpotifySource::EMBED_URL, $source);
+    }
+
+    /** @test */
+    public function it_parses_spotify_uri()
+    {
+        $source = Embedilite::from('spotify')->setSource(SpotifySource::URI)->parseSource();
+
+        $this->assertEquals(SpotifySource::EMBED_URL, $source);
     }
 
     /** @test */
     public function it_renders_spotify_embed()
     {
         $embed = Embedilite::from('spotify')->setSource(SpotifySource::URL)->toHtml();
-        $expected = View::make('embedilite::spotify', ['id' => SpotifySource::ID, 'type' => SpotifySource::TYPE])->render();
+        $expected = View::make('embedilite::spotify', ['source' => SpotifySource::EMBED_URL])->render();
 
         $this->assertStringContainsString($expected, $embed);
     }

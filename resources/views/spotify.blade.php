@@ -1,5 +1,5 @@
 <iframe
-    src="https://open.spotify.com/embed/{{ $type }}/{{ $id }}"
+    src="{{ $source }}"
     width="{{ $width ?? 300 }}"
     height="{{ $height ?? 380 }}"
     frameborder="0"

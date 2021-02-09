@@ -7,6 +7,7 @@ use InvalidArgumentException;
 use JulioMotol\Embedilite\Contracts\Factory;
 use JulioMotol\Embedilite\Contracts\Provider;
 use JulioMotol\Embedilite\Providers\SpotifyProvider;
+use JulioMotol\Embedilite\Providers\YoutubeProvider;
 
 class EmbediliteManager extends Manager implements Factory
 {
@@ -29,6 +30,16 @@ class EmbediliteManager extends Manager implements Factory
     protected function createSpotifyDriver()
     {
         return new SpotifyProvider;
+    }
+
+    /**
+     * Create an instance of a Youtube embed driver.
+     *
+     * @return YoutubeProvider
+     */
+    protected function createYoutubeDriver()
+    {
+        return new YoutubeProvider;
     }
 
     /**

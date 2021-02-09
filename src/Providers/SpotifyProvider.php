@@ -31,7 +31,7 @@ class SpotifyProvider extends Provider
     /**
      * Parse the source to the data needed to render the embed.
      *
-     * @return array
+     * @return string
      */
     public function parseSource(): string
     {

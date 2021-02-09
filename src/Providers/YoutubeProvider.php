@@ -43,7 +43,7 @@ class YoutubeProvider extends Provider
      * Parse the Spotify url
      *
      * @param string $url
-     * @return array
+     * @return string
      */
     protected function parseVideoId(string $url): string
     {

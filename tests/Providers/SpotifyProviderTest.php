@@ -11,25 +11,25 @@ use JulioMotol\Embedilite\Tests\TestSupport\TestSources\SpotifySource;
 class SpotifyProviderTest extends TestCase
 {
     /** @test */
-    public function it_validates_spotify_url()
+    public function it_validates_url()
     {
         $this->assertTrue(Embedilite::from('spotify')::validateSource(SpotifySource::URL));
     }
 
     /** @test */
-    public function it_validates_spotify_uri()
+    public function it_validates_uri()
     {
         $this->assertTrue(Embedilite::from('spotify')::validateSource(SpotifySource::URI));
     }
 
     /** @test */
-    public function it_validates_invalid_spotify_source()
+    public function it_validates_invalid_source()
     {
         $this->assertFalse(Embedilite::from('spotify')::validateSource(''));
     }
 
     /** @test */
-    public function it_parses_spotify_url()
+    public function it_parses_url()
     {
         $source = Embedilite::from('spotify')->setSource(SpotifySource::URL)->parseSource();
 
@@ -37,7 +37,7 @@ class SpotifyProviderTest extends TestCase
     }
 
     /** @test */
-    public function it_parses_spotify_uri()
+    public function it_parses_uri()
     {
         $source = Embedilite::from('spotify')->setSource(SpotifySource::URI)->parseSource();
 
@@ -45,7 +45,7 @@ class SpotifyProviderTest extends TestCase
     }
 
     /** @test */
-    public function it_renders_spotify_embed()
+    public function it_renders_embed()
     {
         $embed = Embedilite::from('spotify')->setSource(SpotifySource::URL)->toHtml();
         $expected = View::make('embedilite::spotify', ['source' => SpotifySource::EMBED_URL])->render();
@@ -54,7 +54,7 @@ class SpotifyProviderTest extends TestCase
     }
 
     /** @test */
-    public function it_throws_exception_when_rendering_invalid_spotify_source()
+    public function it_throws_exception_when_rendering_invalid_source()
     {
         $this->expectException(InvalidEmbedSource::class);
 

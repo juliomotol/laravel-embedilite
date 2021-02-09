@@ -46,7 +46,7 @@ trait InteractsWithEmbed
      * Check if this model has embed.
      *
      * @param string|null $provider
-     * @return boolean
+     * @return bool
      */
     public function hasEmbed(?string $provider): bool
     {
@@ -95,7 +95,7 @@ trait InteractsWithEmbed
 
         $embed = $this->embed()->find($embedId);
 
-        if (!$embed) {
+        if (! $embed) {
             throw new \Exception('embed does not belong to this model');
         }
 

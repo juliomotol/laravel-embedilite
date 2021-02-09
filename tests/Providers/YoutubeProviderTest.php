@@ -56,7 +56,7 @@ class YoutubeProviderTest extends TestCase
         $embed = Embedilite::from('youtube')
             ->setSource(YoutubeSource::URL)
             ->toHtml();
-            $expected = View::make('embedilite::youtube', ['source' => YoutubeSource::EMBED_URL . '?' . http_build_query(['origin' => url('/')])])->render();
+        $expected = View::make('embedilite::youtube', ['source' => YoutubeSource::EMBED_URL . '?' . http_build_query(['origin' => url('/')])])->render();
 
         $this->assertStringContainsString($expected, $embed);
         $this->assertStringContainsString(urlencode(url('/')), $embed);

@@ -9,7 +9,7 @@ class EmbedSource implements Rule
 {
     /**
      * The providers to be validated with.
-     * 
+     *
      * @var string[]
      */
     protected array $providers;
@@ -29,7 +29,7 @@ class EmbedSource implements Rule
     public function passes($attribute, $value)
     {
         foreach ($this->providers as $provider) {
-            if (!EmbediliteFacade::from($provider)::validateSource($value)) {
+            if (! EmbediliteFacade::from($provider)::validateSource($value)) {
                 return false;
             }
         }
